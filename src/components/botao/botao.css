@@ -1,0 +1,17 @@
+button{
+    background-color: #6278F7;
+    color: white;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0);
+    width: 100%;
+    font-size: 24px;
+    padding: 24px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+    transition: transform 0.3s ease;
+}
+button:hover{
+    transform: scale(1.1);
+    color: black;
+    border: solid 1px black;
+}
