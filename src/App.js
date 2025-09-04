@@ -54,13 +54,8 @@ function App() {
     setColaboradores([...colaboradores, colaborador])
   }
   const aoColaboradorDeletado = (colaborador) => {
-    const start = colaboradores.indexOf(colaborador);
-    const end = start + 1;
-    console.log(start);
-    const  novoValor = colaboradores.slice(start, end);
-    const novosColaboradores = novoValor
+    const novosColaboradores = colaboradores.filter(c => c !== colaborador);
     setColaboradores(novosColaboradores);
-    console.log("Colaborador deletado com sucesso!");
   }
   return (
     <div className="App">
