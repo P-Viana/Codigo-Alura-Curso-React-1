@@ -53,7 +53,15 @@ function App() {
     // Coloca todos os colaboradores anteriores mais o atual
     setColaboradores([...colaboradores, colaborador])
   }
-
+  const aoColaboradorDeletado = (colaborador) => {
+    const start = colaboradores.indexOf(colaborador);
+    const end = start + 1;
+    console.log(start);
+    const  novoValor = colaboradores.slice(start, end);
+    const novosColaboradores = novoValor
+    setColaboradores(novosColaboradores);
+    console.log("Colaborador deletado com sucesso!");
+  }
   return (
     <div className="App">
       <h1>Inframind</h1>
@@ -62,13 +70,13 @@ function App() {
         times={times.map(time => time.nome)} 
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
         />
-      {times.map(time => <Time 
+      {times.map((time) => <Time 
         key={time.nome} 
         nome={time.nome} 
         corPrimaria={time.corPrimaria} 
         corSecundaria={time.corSecundaria}
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-
+        aoColaboradorDeletado={(colaborador) => aoColaboradorDeletado(colaborador)}
         />)}
     </div>
   );

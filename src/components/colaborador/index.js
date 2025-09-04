@@ -3,6 +3,7 @@ import './colaborador.css'
 const Colaborador = (props) => {
     return(
         <div className='colaborador'>
+            <button style={{backgroundColor: props.corDeFundo}} onClick={() => props.aoColaboradorDeletado(props.nome)}>Deletar</button>
             <div className='cabecalho' style={{backgroundColor: props.corDeFundo}}>
                 <img src={props.imagem} alt={props.nome}/>
             </div>
