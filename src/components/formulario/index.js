@@ -32,11 +32,12 @@ const Formulario = (props) => {
                 <CampoTexto 
                     obrigatorio={true} 
                     label="Nome" 
-                    placeholder="Digite seu nome!"
+                    placeholder="Digite seu nome! :-D-+-<"
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
                 <ListaSuspensa 
+                    placeholder="Selecione o cargo"
                     obrigatorio={true} 
                     label="Cargo" 
                     itens={props.times}
@@ -45,14 +46,14 @@ const Formulario = (props) => {
                 />
                 <CampoTexto 
                     label="Imagem" 
-                    placeholder="Digite o endereço da sua imagem!"
+                    placeholder="Digite o endereço da imagem ou coloque o link perfil gitHub + .png"
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
                 />
                 <CampoTexto 
                     obrigatorio={true} 
                     label="Pequena descrição" 
-                    placeholder="Digite algo! Qualquer coisa para aparecer abaixo do seu nome! :)"
+                    placeholder="Digite algo! Qualquer coisa para aparecer abaixo do seu nome! :-)"
                     valor={pequenaDescricao}
                     aoAlterado={valor => setPequenaDescricao(valor)}
                 />

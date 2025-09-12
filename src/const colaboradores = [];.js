@@ -1,3 +1,4 @@
+// Exemplo Criação de Array
 const colaboradores = [];
 
 function aoColaboradorDeletado (colaborador) {

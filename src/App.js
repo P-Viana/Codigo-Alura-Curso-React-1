@@ -64,15 +64,13 @@ function App() {
    const aoColaboradorDeletado = (colaborador) => {
    const novosColaboradores = colaboradores.filter(c => c !== colaborador);
    setColaboradores(novosColaboradores);
-   console.log('colaborador: ', colaborador);
-   console.log('colaboradores :', colaboradores);
-   console.log('novosColaboradores :', novosColaboradores)
  }
   const duplicarCard = (colaborador, index) => {
-    const novosColaboradores = [...colaboradores, colaborador];
+    // Criar a duplicata do objeto
+    var novoColaborador = Object.assign({}, colaborador);
+    novoColaborador.index = colaboradores.length;
+    const novosColaboradores = [...colaboradores, novoColaborador];
     setColaboradores(novosColaboradores);
-    console.log("Colaboradores antes de duplicar: ", colaboradores)
-    console.log("Colaboradores depois de duplicar: ", novosColaboradores)
   }
   return (
     <div className="App">

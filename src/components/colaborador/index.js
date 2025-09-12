@@ -10,7 +10,7 @@ const Colaborador = (props) => {
                 <h4>{props.nome}</h4>
                 <h5>{props.pequenaDescricao}</h5>
             </div>
-            <button style={{backgroundColor: props.corDeFundo}} onClick={() => props.duplicarCard(props.nome)}>Duplicar</button>
+            <button style={{backgroundColor: props.corDeFundo}} onClick={() => props.duplicarCard(props.index)}>Duplicar</button>
             <button style={{backgroundColor: props.corDeFundo}} onClick={() => props.aoColaboradorDeletado(props.nome)}>Deletar</button>
         </div>
     )
