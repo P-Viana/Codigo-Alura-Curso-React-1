@@ -74,8 +74,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Inframind</h1>
-      <Banner />
+      <h1>Organizador de Colaboradores</h1>
       <Formulario 
         times={times.map(time => time.nome)} 
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
