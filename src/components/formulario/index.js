@@ -16,7 +16,8 @@ const Formulario = (props) => {
             nome,
             time: cargo,
             imagem,
-            pequenaDescricao
+            pequenaDescricao,
+            index: props.index
         })
         setNome('')
         setCargo('')

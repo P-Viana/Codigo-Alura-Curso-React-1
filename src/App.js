@@ -52,10 +52,27 @@ function App() {
   const aoNovoColaboradorAdicionado = (colaborador) => {
     // Coloca todos os colaboradores anteriores mais o atual
     setColaboradores([...colaboradores, colaborador])
+    console.log('colaborador: ', colaborador);
   }
-  const aoColaboradorDeletado = (colaborador) => {
-    const novosColaboradores = colaboradores.filter(c => c !== colaborador);
+//    const aoColaboradorDeletado = (index) => {
+//     const novosColaboradores = colaboradores.filter((c, i) => i !== index);
+//     console.log('index: ', index);
+//     console.log('colaboradores :', colaboradores);
+//     console.log('novosColaboradores :', novosColaboradores)
+//     setColaboradores(novosColaboradores);
+// }
+   const aoColaboradorDeletado = (colaborador) => {
+   const novosColaboradores = colaboradores.filter(c => c !== colaborador);
+   setColaboradores(novosColaboradores);
+   console.log('colaborador: ', colaborador);
+   console.log('colaboradores :', colaboradores);
+   console.log('novosColaboradores :', novosColaboradores)
+ }
+  const duplicarCard = (colaborador, index) => {
+    const novosColaboradores = [...colaboradores, colaborador];
     setColaboradores(novosColaboradores);
+    console.log("Colaboradores antes de duplicar: ", colaboradores)
+    console.log("Colaboradores depois de duplicar: ", novosColaboradores)
   }
   return (
     <div className="App">
@@ -64,14 +81,18 @@ function App() {
       <Formulario 
         times={times.map(time => time.nome)} 
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
+        index={colaboradores.length}
         />
       {times.map((time) => <Time 
-        key={time.nome} 
+        key={time.nome}
         nome={time.nome} 
         corPrimaria={time.corPrimaria} 
         corSecundaria={time.corSecundaria}
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+        //aoColaboradorDeletado={(index) => aoColaboradorDeletado(index)}
         aoColaboradorDeletado={(colaborador) => aoColaboradorDeletado(colaborador)}
+        index = {colaboradores.length}
+        duplicarCard={(colaborador, index) => duplicarCard(colaborador, index)}
         />)}
     </div>
   );
