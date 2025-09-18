@@ -1,11 +1,18 @@
 import { useState } from 'react';
 import './App.css';
-import Banner from './components/banner/banner';
 import Formulario from './components/formulario';
 import Time from './components/time';
+import Time2 from './time2';
 
 function App() {
 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Código a ser executado quando o DOM estiver pronto
+    // Pegar os valores do localStorage
+    localStorage.getItem("Colaborador");
+    // Apenas durante o DEBUG usar o console.log()
+    console.log(colaboradores); 
+  });
   const times = [
     {
       nome: 'Líder',
@@ -49,22 +56,19 @@ function App() {
     }
   ]
   const [colaboradores, setColaboradores] = useState([])
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
+    const jsonStringColaborador = JSON.stringify(colaborador);
+    localStorage.setItem("Colaborador", jsonStringColaborador);
+    console.log(jsonStringColaborador);
     // Coloca todos os colaboradores anteriores mais o atual
-    setColaboradores([...colaboradores, colaborador])
+    setColaboradores([...colaboradores, colaborador]);
     console.log('colaborador: ', colaborador);
   }
-//    const aoColaboradorDeletado = (index) => {
-//     const novosColaboradores = colaboradores.filter((c, i) => i !== index);
-//     console.log('index: ', index);
-//     console.log('colaboradores :', colaboradores);
-//     console.log('novosColaboradores :', novosColaboradores)
-//     setColaboradores(novosColaboradores);
-// }
    const aoColaboradorDeletado = (colaborador) => {
    const novosColaboradores = colaboradores.filter(c => c !== colaborador);
    setColaboradores(novosColaboradores);
- }
+  }
   const duplicarCard = (colaborador, index) => {
     // Criar a duplicata do objeto
     var novoColaborador = Object.assign({}, colaborador);
@@ -80,6 +84,7 @@ function App() {
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
         index={colaboradores.length}
         />
+      <Time2 />
       {times.map((time) => <Time 
         key={time.nome}
         nome={time.nome} 
