@@ -4,8 +4,8 @@ import './time.css'
 const Time = (props) => {
     localStorage.getItem("Colaborador");
     const colaboradorSalvo = JSON.parse(localStorage.getItem("Colaborador"));
-    console.log("Valores retornados: ",colaboradorSalvo);
-    console.log("Nome: ", colaboradorSalvo.nome);
+    //console.log("Valores retornados: ",colaboradorSalvo);
+    //console.log("Nome: ", colaboradorSalvo.nome);
     return(
         
         (props.colaboradores.length > 0) && <section className='time' style={{backgroundColor: "#aeace6ff"}}>

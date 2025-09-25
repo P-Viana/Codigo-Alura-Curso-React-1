@@ -11,7 +11,7 @@ function App() {
     // Pegar os valores do localStorage
     localStorage.getItem("Colaborador");
     // Apenas durante o DEBUG usar o console.log()
-    console.log(colaboradores); 
+    //console.log(colaboradores); 
   });
   const times = [
     {
@@ -60,10 +60,10 @@ function App() {
   const aoNovoColaboradorAdicionado = (colaborador) => {
     const jsonStringColaborador = JSON.stringify(colaborador);
     localStorage.setItem("Colaborador", jsonStringColaborador);
-    console.log(jsonStringColaborador);
+    //console.log(jsonStringColaborador);
     // Coloca todos os colaboradores anteriores mais o atual
     setColaboradores([...colaboradores, colaborador]);
-    console.log('colaborador: ', colaborador);
+    //console.log('colaborador: ', colaborador);
   }
    const aoColaboradorDeletado = (colaborador) => {
    const novosColaboradores = colaboradores.filter(c => c !== colaborador);

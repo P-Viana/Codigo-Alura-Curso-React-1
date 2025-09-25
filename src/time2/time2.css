@@ -1,3 +1,8 @@
 .Time2{
     text-align: center;
 }
+.ColaboradoresTime2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
