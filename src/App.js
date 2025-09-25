@@ -58,16 +58,19 @@ function App() {
   const [colaboradores, setColaboradores] = useState([])
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    const jsonStringColaborador = JSON.stringify(colaborador);
-    localStorage.setItem("Colaborador", jsonStringColaborador);
-    //console.log(jsonStringColaborador);
     // Coloca todos os colaboradores anteriores mais o atual
     setColaboradores([...colaboradores, colaborador]);
     //console.log('colaborador: ', colaborador);
+    const jsonStringColaboradores = JSON.stringify(colaboradores);
+    localStorage.setItem("Colaboradores", jsonStringColaboradores);
+    console.log(jsonStringColaboradores);
   }
    const aoColaboradorDeletado = (colaborador) => {
    const novosColaboradores = colaboradores.filter(c => c !== colaborador);
    setColaboradores(novosColaboradores);
+   const jsonStringColaboradores = JSON.stringify(novosColaboradores);
+    localStorage.setItem("Colaboradores", jsonStringColaboradores);
+    console.log(jsonStringColaboradores);
   }
   const duplicarCard = (colaborador, index) => {
     // Criar a duplicata do objeto
@@ -75,6 +78,9 @@ function App() {
     novoColaborador.index = colaboradores.length;
     const novosColaboradores = [...colaboradores, novoColaborador];
     setColaboradores(novosColaboradores);
+    const jsonStringColaboradores = JSON.stringify(novosColaboradores);
+    localStorage.setItem("Colaboradores", jsonStringColaboradores);
+    console.log(jsonStringColaboradores);
   }
   return (
     <div className="App">
@@ -84,9 +90,9 @@ function App() {
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
         index={colaboradores.length}
         />
-      <Time2 
+      {/* <Time2 
         colaboradorSalvoAtual = {JSON.parse(localStorage.getItem("Colaborador"))}
-      />
+      /> */}
       {times.map((time) => <Time 
         key={time.nome}
         nome={time.nome} 
@@ -97,6 +103,7 @@ function App() {
         aoColaboradorDeletado={(colaborador) => aoColaboradorDeletado(colaborador)}
         index = {colaboradores.length}
         duplicarCard={(colaborador, index) => duplicarCard(colaborador, index)}
+        colaboradorSalvoAtual = {JSON.parse(localStorage.getItem("Colaboradores"))}
         />)}
     </div>
   );
