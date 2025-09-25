@@ -84,7 +84,9 @@ function App() {
         aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
         index={colaboradores.length}
         />
-      <Time2 />
+      <Time2 
+        colaboradorSalvoAtual = {JSON.parse(localStorage.getItem("Colaborador"))}
+      />
       {times.map((time) => <Time 
         key={time.nome}
         nome={time.nome} 

@@ -1,9 +1,9 @@
 import Colaborador from '../components/colaborador';
 import './time2.css'
 
-const Time2 = () => {
-    const colaboradorSalvoAtual = JSON.parse(localStorage.getItem("Colaborador"));
-    const arrayColaboradores = [colaboradorSalvoAtual, colaboradorSalvoAtual];
+const Time2 = (props) => {
+    const arrayColaboradoresAntigos = [props.colaboradorSalvoAtual];
+    const arrayColaboradores = [...arrayColaboradoresAntigos, props.colaboradorSalvoAtual];
     return(
         <div className='Time2'>
             <div className='ColaboradoresTime2'>
