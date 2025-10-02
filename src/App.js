@@ -1,18 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Formulario from './components/formulario';
 import Time from './components/time';
-import Time2 from './time2';
 
 function App() {
 
-  document.addEventListener('DOMContentLoaded', function() {
-    // Código a ser executado quando o DOM estiver pronto
-    // Pegar os valores do localStorage
-    localStorage.getItem("Colaborador");
-    // Apenas durante o DEBUG usar o console.log()
-    //console.log(colaboradores); 
-  });
   const times = [
     {
       nome: 'Líder',
@@ -57,10 +49,17 @@ function App() {
   ]
   const [colaboradores, setColaboradores] = useState([])
 
+  // Carrega colaboradores do localStorage apenas uma vez na inicialização
+  useEffect(() => {
+    const jsonStringColaboradores = localStorage.getItem("Colaboradores");
+    if (jsonStringColaboradores) {
+      setColaboradores(JSON.parse(jsonStringColaboradores));
+    }
+  }, []);
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
     // Coloca todos os colaboradores anteriores mais o atual
     setColaboradores([...colaboradores, colaborador]);
-    //console.log('colaborador: ', colaborador);
     const jsonStringColaboradores = JSON.stringify(colaboradores);
     localStorage.setItem("Colaboradores", jsonStringColaboradores);
     console.log(jsonStringColaboradores);
@@ -103,7 +102,7 @@ function App() {
         aoColaboradorDeletado={(colaborador) => aoColaboradorDeletado(colaborador)}
         index = {colaboradores.length}
         duplicarCard={(colaborador, index) => duplicarCard(colaborador, index)}
-        colaboradorSalvoAtual = {JSON.parse(localStorage.getItem("Colaboradores"))}
+        colaboradoresSalvosAtuais = {JSON.parse(localStorage.getItem("Colaboradores"))}
         />)}
     </div>
   );

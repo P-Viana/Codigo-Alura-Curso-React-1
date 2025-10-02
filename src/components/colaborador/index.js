@@ -1,5 +1,4 @@
 import './colaborador.css'
-import Time from '../time'
 const Colaborador = (props) => {
     return(
         <div className='colaborador'>
